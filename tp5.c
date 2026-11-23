@@ -20,14 +20,7 @@ int main(){
                 
 
             case 2:                 // Afficher le résumé du jour
-                printf("\nRésumé du jour :\n");
-                printf("Eau : %d\n", jour.eau);
-                printf("Cafe : %d\n", jour.cafe);
-                printf("Bonbons : %d\n", jour.bonbons);
-                printf("Gateaux : %d\n", jour.gateaux);
-                printf("Legumes : %d\n", jour.legumes);
-                printf("Fruits : %d\n", jour.fruits);
-                printf("Proteines : %d\n", jour.proteines);
+                afficherResume(jour);
                 break;
 
             case 3:                 // Sauvegarder et quitter

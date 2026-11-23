@@ -15,4 +15,6 @@ int afficherMenu();
 
 Consommation ajouterConsommation(Consommation c);
 
+void afficherResume(Consommation c);
+
 #endif 

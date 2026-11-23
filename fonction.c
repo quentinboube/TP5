@@ -77,3 +77,17 @@ Consommation ajouterConsommation(Consommation c){
 
     return c;
 }
+
+
+void afficherResume(Consommation c)
+{
+    printf("\n========== RESUME DU JOUR ==========\n");
+    printf("Eau       : %d \n", c.eau);
+    printf("Cafe      : %d \n", c.cafe);
+    printf("Bonbons   : %d \n", c.bonbons);
+    printf("Gateaux   : %d \n", c.gateaux);
+    printf("Legumes   : %d \n", c.legumes);
+    printf("Fruits    : %d \n", c.fruits);
+    printf("Proteines : %d \n", c.proteines);
+    printf("====================================\n");
+}
