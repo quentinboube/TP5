@@ -2,7 +2,7 @@
 #include "tp5.h"
 
 int afficherMenu() {
-    printf("===============================\n");
+    printf("\n\n===============================\n");
     printf("Suivi de consommation :\n");
     printf("===============================\n");
     printf("1. Ajouter une consommation\n");
@@ -78,16 +78,105 @@ Consommation ajouterConsommation(Consommation c){
     return c;
 }
 
+int humeurBonbons(int q)
+{
+    if(q <= 3)
+        return 0;
+    else if(q <= 7)
+        return 1;
+    else if(q <= 12)
+        return 2;
+    else
+        return 3;
+}
+
+int humeurLegumes(int q)
+{
+    if(q <= 1)
+        return 0;
+    else if(q <= 3)
+        return 1;
+    else if(q <= 5)
+        return 2;
+    else
+        return 3;
+}
+
+int humeurFruits(int q)
+{
+    if(q == 0)
+        return 0;
+    else if(q <= 2)
+        return 1;
+    else if(q <= 4)
+        return 2;
+    else
+        return 3;
+}
 
 void afficherResume(Consommation c)
 {
     printf("\n========== RESUME DU JOUR ==========\n");
-    printf("Eau       : %d \n", c.eau);
-    printf("Cafe      : %d \n", c.cafe);
-    printf("Bonbons   : %d \n", c.bonbons);
-    printf("Gateaux   : %d \n", c.gateaux);
-    printf("Legumes   : %d \n", c.legumes);
-    printf("Fruits    : %d \n", c.fruits);
-    printf("Proteines : %d \n", c.proteines);
+
+    printf("Eau       : %d ", c.eau);
+    printf("\n");
+
+    printf("Cafe      : %d ", c.cafe);
+    printf("\n");
+
+    printf("Bonbons   : %d ", c.bonbons);
+    switch(humeurBonbons(c.bonbons))
+    {
+        case 0: 
+            printf("😇 "); 
+            break;
+        case 1: 
+            printf("🙂 "); 
+            break;
+        case 2: 
+            printf("😬 "); 
+            break;
+        case 3: 
+            printf("😈 "); 
+            break;
+    }
+    printf("\n");
+
+    printf("Gateaux   : %d ", c.gateaux);
+    printf("\n");
+
+    printf("Legumes   : %d ", c.legumes);
+
+    switch(humeurLegumes(c.legumes))
+    {
+        case 0: 
+            printf("😕 "); 
+            break;
+        case 1: 
+            printf("🙂 "); 
+            break;
+        case 2: 
+            printf("😎 "); 
+            break;
+        case 3: 
+            printf("🤩 "); 
+            break;
+    }
+    printf("\n");
+
+    printf("Fruits    : %d ", c.fruits);
+
+    switch(humeurFruits(c.fruits))
+    {
+        case 0: printf("☹️ "); break;
+        case 1: printf("🙂 "); break;
+        case 2: printf("😁 "); break;
+        case 3: printf("🤩 "); break;
+    }
+    printf("\n");
+
+    printf("Proteines : %d ", c.proteines);
+    printf("\n");
+
     printf("====================================\n");
 }

@@ -16,5 +16,8 @@ int afficherMenu();
 Consommation ajouterConsommation(Consommation c);
 
 void afficherResume(Consommation c);
+int humeurBonbons(int quantite);
+int humeurLegumes(int quantite);
+int humeurFruits(int quantite);
 
 #endif 
