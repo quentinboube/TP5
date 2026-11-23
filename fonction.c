@@ -118,31 +118,35 @@ void afficherResume(Consommation c)
 {
     printf("\n========== RESUME DU JOUR ==========\n");
 
-    printf("Eau       : %d ", c.eau);
+    printf("Eau       : %d      ", c.eau);
+    afficherBarre(c.eau,10);
     printf("\n");
 
-    printf("Cafe      : %d ", c.cafe);
+    printf("Cafe      : %d      ", c.cafe);
+    afficherBarre(c.cafe,10);
     printf("\n");
 
     printf("Bonbons   : %d ", c.bonbons);
     switch(humeurBonbons(c.bonbons))
     {
         case 0: 
-            printf("😇 "); 
+            printf("😇   "); 
             break;
         case 1: 
-            printf("🙂 "); 
+            printf("🙂   "); 
             break;
         case 2: 
-            printf("😬 "); 
+            printf("😬   "); 
             break;
         case 3: 
-            printf("😈 "); 
+            printf("😈   "); 
             break;
     }
+    afficherBarre(c.bonbons,15);
     printf("\n");
 
-    printf("Gateaux   : %d ", c.gateaux);
+    printf("Gateaux   : %d      ", c.gateaux);
+    afficherBarre(c.gateaux,10);
     printf("\n");
 
     printf("Legumes   : %d ", c.legumes);
@@ -150,33 +154,69 @@ void afficherResume(Consommation c)
     switch(humeurLegumes(c.legumes))
     {
         case 0: 
-            printf("😕 "); 
+            printf("😕   "); 
             break;
         case 1: 
-            printf("🙂 "); 
+            printf("🙂   "); 
             break;
         case 2: 
-            printf("😎 "); 
+            printf("😎   "); 
             break;
         case 3: 
-            printf("🤩 "); 
+            printf("🤩   "); 
             break;
     }
+    afficherBarre(c.legumes,10);
     printf("\n");
 
     printf("Fruits    : %d ", c.fruits);
 
     switch(humeurFruits(c.fruits))
     {
-        case 0: printf("☹️ "); break;
-        case 1: printf("🙂 "); break;
-        case 2: printf("😁 "); break;
-        case 3: printf("🤩 "); break;
+        case 0: 
+            printf("☹️   "); 
+            break;
+        case 1: 
+            printf("🙂   "); 
+            break;
+        case 2: 
+            printf("😁   "); 
+            break;
+        case 3: 
+            printf("🤩   "); 
+            break;
     }
+    afficherBarre(c.fruits,10);
     printf("\n");
 
-    printf("Proteines : %d ", c.proteines);
+    printf("Proteines : %d      ", c.proteines);
+    afficherBarre(c.proteines,10);
     printf("\n");
 
     printf("====================================\n");
+}
+
+void afficherBarre(int valeur, int max)
+{
+    int i;
+    int casesPleines;
+
+    if(max <= 0)
+        max = 1;
+
+    if(valeur < 0)
+        valeur = 0;
+
+    if(valeur > max)
+        valeur = max;
+
+    casesPleines = (valeur * 10) / max;
+
+    for(i = 0; i < 10; i++)
+    {
+        if(i < casesPleines)
+            printf("█");
+        else
+            printf("░");
+    }
 }
