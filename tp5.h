@@ -4,13 +4,15 @@
 typedef struct {
     int eau;
     int cafe;
-    int bonbon;
-    int gateau;
-    int legume;
-    int fruit;
-    int proteine;
-} Consomation;
+    int bonbons;
+    int gateaux;
+    int legumes;
+    int fruits;
+    int proteines;
+} Consommation;
 
 int afficherMenu();
+
+Consommation ajouterConsommation(Consommation c);
 
 #endif 
