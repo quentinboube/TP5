@@ -11,6 +11,13 @@ int main(){
 
     Consommation jour = {0, 0, 0, 0, 0, 0, 0};
 
+    Objectifs objectifs;
+
+    objectifs.eau = 8;
+    objectifs.legumes = 5;
+    objectifs.fruits = 3;
+    objectifs.proteines = 2;
+
     while (1)
     {
         switch(afficherMenu()) {
@@ -23,7 +30,11 @@ int main(){
                 afficherResume(jour);
                 break;
 
-            case 3:                 // Sauvegarder et quitter
+            case 3:
+                afficherObjectifsEtScore(jour, objectifs);
+                break;
+
+            case 4:                 // Sauvegarder et quitter
                 printf("Sauvegarde en cours...\n");
                 sleep(2); 
                 printf("Merci d'avoir utilisé le programme. À bientôt !\n");

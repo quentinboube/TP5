@@ -11,6 +11,16 @@ typedef struct {
     int proteines;
 } Consommation;
 
+
+typedef struct
+{
+    int eau;
+    int legumes;
+    int fruits;
+    int proteines;
+} Objectifs;
+
+
 int afficherMenu();
 
 Consommation ajouterConsommation(Consommation c);
@@ -24,5 +34,9 @@ int humeurLegumes(int quantite);
 int humeurFruits(int quantite);
 
 void afficherBarre(int valeur, int max);
+
+int calculerScoreSante(Consommation c, Objectifs o);
+
+void afficherObjectifsEtScore(Consommation c, Objectifs o);
 
 #endif 

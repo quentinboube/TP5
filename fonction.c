@@ -19,13 +19,13 @@ Consommation ajouterConsommation(Consommation c){
     int quantite;
 
     printf("\nQuelle categorie voulez-vous modifier ?\n");
-    printf("1. Eau\n");
-    printf("2. Cafe\n");
-    printf("3. Bonbons\n");
-    printf("4. Gateaux\n");
-    printf("5. Legumes\n");
-    printf("6. Fruits\n");
-    printf("7. Proteines\n");
+    printf("1. Eau      💧\n");
+    printf("2. Cafe     ☕\n");
+    printf("3. Bonbons  🍬\n");
+    printf("4. Gateaux  🍰\n");
+    printf("5. Legumes  🥦\n");
+    printf("6. Fruits   🍎\n");
+    printf("7. Proteines🍗\n");
 
     printf("Votre choix : ");
     scanf("%d", &categorie);
@@ -120,11 +120,11 @@ void afficherResume(Consommation c)
 
     printf("Eau       : %d      ", c.eau);
     afficherBarre(c.eau,10);
-    printf("\n");
+    printf("  💧\n");
 
     printf("Cafe      : %d      ", c.cafe);
     afficherBarre(c.cafe,10);
-    printf("\n");
+    printf(" ☕\n");
 
     printf("Bonbons   : %d ", c.bonbons);
     switch(humeurBonbons(c.bonbons))
@@ -143,11 +143,11 @@ void afficherResume(Consommation c)
             break;
     }
     afficherBarre(c.bonbons,15);
-    printf("\n");
+    printf("  🍬\n");
 
     printf("Gateaux   : %d      ", c.gateaux);
     afficherBarre(c.gateaux,10);
-    printf("\n");
+    printf("  🍰\n");
 
     printf("Legumes   : %d ", c.legumes);
 
@@ -167,14 +167,14 @@ void afficherResume(Consommation c)
             break;
     }
     afficherBarre(c.legumes,10);
-    printf("\n");
+    printf("  🥦\n");
 
     printf("Fruits    : %d ", c.fruits);
 
     switch(humeurFruits(c.fruits))
     {
         case 0: 
-            printf("☹️   "); 
+            printf("☹️    "); 
             break;
         case 1: 
             printf("🙂   "); 
@@ -187,11 +187,11 @@ void afficherResume(Consommation c)
             break;
     }
     afficherBarre(c.fruits,10);
-    printf("\n");
+    printf("  🍎\n");
 
     printf("Proteines : %d      ", c.proteines);
     afficherBarre(c.proteines,10);
-    printf("\n");
+    printf("  🍗\n");
 
     printf("====================================\n");
 }
@@ -219,4 +219,81 @@ void afficherBarre(int valeur, int max)
         else
             printf("░");
     }
+}
+
+
+int calculerScoreSante(Consommation c, Objectifs o)
+{
+    int score = 50;
+    int malus;
+
+    if(c.eau >= o.eau)
+        score += 10;
+
+    if(c.legumes >= o.legumes)
+        score += 10;
+
+    if(c.fruits >= o.fruits)
+        score += 10;
+
+    if(c.proteines >= o.proteines)
+        score += 10;
+
+    if(c.bonbons > 5)
+    {
+        malus = c.bonbons - 5;
+
+        if(malus > 15)
+            malus = 15;
+
+        score -= malus;
+    }
+
+    if(c.cafe > 3)
+    {
+        malus = (c.cafe - 3) * 2;
+
+        if(malus > 20)
+            malus = 20;
+
+        score -= malus;
+    }
+
+    if(score < 0)
+        score = 0;
+
+    if(score > 100)
+        score = 100;
+
+    return score;
+}
+
+void afficherObjectifsEtScore(Consommation c, Objectifs o)
+{
+    printf("\n======= OBJECTIFS DU JOUR =======\n");
+
+    printf("Eau       : %d %s\n",
+           o.eau,
+           (c.eau >= o.eau) ? "✅" : "❌");
+
+    printf("Cafe      : - (pas d'objectif)\n");
+
+    printf("Bonbons   : - (pas d'objectif)\n");
+
+    printf("Gateaux   : - (pas d'objectif)\n");
+
+    printf("Legumes   : %d %s\n",
+           o.legumes,
+           (c.legumes >= o.legumes) ? "✅" : "❌");
+
+    printf("Fruits    : %d %s\n",
+           o.fruits,
+           (c.fruits >= o.fruits) ? "✅" : "❌");
+
+    printf("Proteines : %d %s\n",
+           o.proteines,
+           (c.proteines >= o.proteines) ? "✅" : "❌");
+
+    printf("\nScore de sante : %d / 100\n",
+           calculerScoreSante(c, o));
 }
